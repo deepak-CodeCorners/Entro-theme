@@ -19,9 +19,64 @@ function entro_theme_scripts(){
 }
 add_action('wp_enqueue_scripts','entro_theme_scripts');
 
-function register_nav_menus(array(
-		'menu'=>'Primary-menu',
-		));
+function custom_new_menu(){
+	register_nav_menu('primary-menu',_('Primary Menu'));
+}
+add_action('init','custom_new_menu');
 
+
+// creating custom gutenberg blocks
+function custom_blocks($categories,$post){
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' =>'home-blocks',
+				'title'=>__('Home Blocks','home-blocks'),
+			),
+			array(
+				'slug' =>'inner-pages-blocks',
+				'title'=>__('Inner Pages Blocks','inner-pages-blocks'),
+			),
+		)
+	);
+}
+add_filter('block_categories','custom_blocks',10,2);
+
+function register_acf_block_types(){
+	include('includes/registered-blocks/home-blocks.php');
+	include('includes/registered-blocks/inner-pages-blocks.php');
+}
+
+//checking if function exits and hook into setup
+if(function_exists('acf_register_block_type')){
+	add_action('acf/init','register_acf_block_types');
+}
+
+
+//Theme options with ACF Plugin
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page(array(
+        'page_title'    => 'Theme Options',
+        'menu_title'    => 'Theme Options',
+        'menu_slug'     => 'theme-options',
+        'capability'    => 'edit_posts',
+        'redirect'      => true
+    ));
+    
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Header Settings',
+        'menu_title'    => 'Header Setting',
+        'parent_slug'   => 'theme-options',
+    ));
+    
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Footer Settings',
+        'menu_title'    => 'Footer Settings',
+        'parent_slug'   => 'theme-options',
+    ));
+
+}
 
 ?>
