@@ -30,4 +30,14 @@ acf_register_block_type(array(
 		'icon'			=>'admin-comments',
 		'keywords'		=>array('home-gallery-section','quote'),
 		));
+
+	acf_register_block_type(array(
+		'name'			=>'Home Sidebar Section',
+		'title'			=>__('Home Sidebar Section'),
+		'description'	=>__(''),
+		'render_template'=>'includes/blocks/home/hom-sidebar-section.php',
+		'category'		=>'home-blocks',
+		'icon'			=>'admin-comments',
+		'keywords'		=>array('home-gallery-section','quote'),
+	));
 ?>

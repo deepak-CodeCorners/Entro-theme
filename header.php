@@ -1,3 +1,7 @@
+<?php  
+$hss_carousel= get_field('hss_carousel', 9);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
 
 <body class="main-layout">
   <!-- loader  -->
-  <div class="loader_bg">
+  <div class="loader_bg d-none">
     <div class="loader"><img src="<?php echo get_template_directory_uri();?>/images/loading.gif" alt="#" /></div>
   </div>
   <!-- end loader -->
@@ -54,7 +58,6 @@
                       );
                     ?>
                    </nav>
-                
                </div> 
              </div>
            </div>
@@ -63,15 +66,20 @@
      </div>
   <!-- end header inner -->
 <!-- end header -->
-     <section class="slider_section">
+<?php if(!empty($hss_carousel)): ?>
+    <section class="slider_section">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+
+          <?php foreach($hss_carousel as $key=>$carousel):?>
+          <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>" class="<?php echo $key==0 ? 'active': '';?>"></li>
+          <!-- <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li> -->
+          <?php endforeach; ?>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+        <?php foreach($hss_carousel as $key =>$carousel):?>
+          <div class="carousel-item <?php echo $key==0 ? 'active':'';?>">
 
             <div class="container">
               <div class="carousel-caption">
@@ -80,55 +88,18 @@
                     <div class="text-bg">
                       <span>The Best</span>
                       <h1>MUSIC BAND EVER</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
+                      <p><?php echo $carousel['carousel_text']; ?></p>
+                      
+                      <a href="<?php echo $carousel['carousel_button1'];?>">Music & Entertainment</a> <a href="<?php echo $carousel['carousel_button2'];  ?>">Buy Tickets </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-
-            <div class="container ">
-              <div class="carousel-caption">
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                        <span>The Best</span>
-                      <h1>MUSIC BAND EVER</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a><a href="#">Buy Tickets </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="carousel-item">
-
-            <div class="container">
-              <div class="carousel-caption ">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                        <span>The Best</span>
-                      <h1>MUSIC BAND EVER</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <?php endforeach; ?>
         </div>
-     
+  
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
      
@@ -137,10 +108,9 @@
         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
       
     </a>
-   </div>
-    
-  
-
+</div>
+</div>
 </section>
+<?php endif; ?>
 </div>
 </header>

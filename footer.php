@@ -1,33 +1,27 @@
+<?php 
+ $home_footer=get_field('home_footer');
+ $fb_button=get_field('fb_button');
+ $twitter_button=get_field('twitter_button');
+ $linkedin_button=get_field('linkedin_button');
+ $insta_button=get_field('insta_button');
+ $copyright_text=get_field('copyright_text');
+?>
 <!--  footer -->
     <footer>
       <div class="footer ">
         <div class="container">
           <div class="row">
-            <div class="col-md-12">
-              <form class="contact_bg">
-            <div class="row">
-              <div class="col-md-12">
+            <div class="col-md-12 contact_bg ">
+            <!-- <div class="row"> -->
+              <!-- <form class="contact_bg"> -->
+         
+              <!-- <div class="col-md-12"> -->
                 <div class="titlepage">
                   <h2>Contact us</h2>
                 </div>
-                <div class="col-md-12">
-                  <input class="contactus" placeholder="Your Name" type="text" name="Your Name">
-                </div>
-                <div class="col-md-12">
-                  <input class="contactus" placeholder="Your Email" type="text" name="Your Email">
-                </div>
-                <div class="col-md-12">
-                  <input class="contactus" placeholder="Your Phone" type="text" name="Your Phone">
-                </div>
-                <div class="col-md-12">
-                  <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                </div>
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                  <button class="send">Send</button>
-                </div>
-              </div>
-            </div>
-            </form>
+                <?php  
+                  echo do_shortcode('[contact-form-7 id="79" title="Home-contact"]');
+                ?>
 
             </div>
             <div class="col-md-12 border_top">
@@ -42,25 +36,21 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                   <div class="address">
                     <ul class="loca">
-                      <li>
-                        <a href="#"><img src="<?php echo get_template_directory_uri();?>/icon/loc.png" alt="#" /></a>Locations
-                   
+                      <?php foreach($home_footer as $footer):?>
                         <li>
-                          
-                            <a href="#"><img src="<?php echo get_template_directory_uri();?>/icon/call.png" alt="#" /></a>+12586954775 </li>
-                          <li>
-                            <a href="#"><img src="<?php echo get_template_directory_uri();?>/icon/email.png" alt="#" /></a>demo@gmail.com </li>
-                          </ul>
+                        <a href="#"><img src="<?php echo $footer['hfs_image'];?>" alt="#" /></a><?php echo $footer['hfs_text'];?>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
                          
-
-                        </div>
+                      </div>
                       </div>
                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                            <ul class="social_link">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $fb_button['url'];?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $twitter_button['url'];?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $linkedin_button['url'];?>"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                            <li><a href="<?php echo $insta_button['url'];?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                           </ul>
                        </div>
                     </div>
@@ -72,7 +62,7 @@
                <div class="container">
               <div class="copyright">
                
-                  <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free  html Templates</a></p>
+                  <p><?php echo $copyright_text; ?></p>
                 </div>
               </div>
             </div>
