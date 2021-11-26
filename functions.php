@@ -79,4 +79,16 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
+
+function my_body_classes( $classes ) {
+ 
+	if(is_front_page()){
+    	$classes =array("home-page", "main-layout");
+	}else{
+		$classes =array("inner-pages", "main-layout");
+	}
+	return $classes;
+}
+add_filter('body_class','my_body_classes');
+
 ?>

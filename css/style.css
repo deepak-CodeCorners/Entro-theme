@@ -945,7 +945,7 @@ transition: all 0.3s ease-in;
      vertical-align: middle;
     margin: 6px 0px;
 }
- .main-menu ul>li:nth-child (6) {
+ .main-menu ul>li:nth-child {
      padding-right: 0px;
 }
  .nav>li {
@@ -970,12 +970,13 @@ transition: all 0.3s ease-in;
     padding-left: 0px;
 }
  
- .header-top {
+.home-page .header-top {
      background:url(../images/banner2.jpg);
      background-size: 100% 100%;
      background-repeat: no-repeat;
+ }
+ .header-top {
      padding-bottom: 50px;
-    
      min-height: 980px;
 }
  .header {

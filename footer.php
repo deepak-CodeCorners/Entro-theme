@@ -33,7 +33,9 @@
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
               <div class="row">
+              <?php if(!empty($home_footer)): ?>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                  
                   <div class="address">
                     <ul class="loca">
                       <?php foreach($home_footer as $footer):?>
@@ -53,6 +55,7 @@
                             <li><a href="<?php echo $insta_button['url'];?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                           </ul>
                        </div>
+                       <?php endif;?>
                     </div>
                   </div>
 

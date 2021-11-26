@@ -1,5 +1,5 @@
 <?php  
-$hss_carousel= get_field('hss_carousel', 9);
+$hss_carousel= get_field('hss_carousel');
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $hss_carousel= get_field('hss_carousel', 9);
 </head>
 <!-- body -->
 
-<body class="main-layout">
+<body <?php body_class(); ?>>
   <!-- loader  -->
   <div class="loader_bg d-none">
     <div class="loader"><img src="<?php echo get_template_directory_uri();?>/images/loading.gif" alt="#" /></div>
@@ -73,8 +73,6 @@ $hss_carousel= get_field('hss_carousel', 9);
 
           <?php foreach($hss_carousel as $key=>$carousel):?>
           <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>" class="<?php echo $key==0 ? 'active': '';?>"></li>
-          <!-- <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li> -->
           <?php endforeach; ?>
         </ol>
         <div class="carousel-inner">
@@ -99,15 +97,15 @@ $hss_carousel= get_field('hss_carousel', 9);
           </div>
         <?php endforeach; ?>
         </div>
-  
+    <?php if ($key!=0):?>
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
      
     </a>
     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-      
+        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  
     </a>
+    <?php endif; ?>
 </div>
 </div>
 </section>
