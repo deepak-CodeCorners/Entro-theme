@@ -84,11 +84,11 @@ $hss_carousel= get_field('hss_carousel');
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                      <span>The Best</span>
-                      <h1>MUSIC BAND EVER</h1>
-                      <p><?php echo $carousel['carousel_text']; ?></p>
+                      <span><?php echo $carousel['span_text'];?></span>
+                      <h1><?php echo $carousel['slider_htext'];?></h1>
+                      <p><?php echo $carousel['slider_ptext']; ?></p>
                       
-                      <a href="<?php echo $carousel['carousel_button1'];?>">Music & Entertainment</a> <a href="<?php echo $carousel['carousel_button2'];  ?>">Buy Tickets </a>
+                      <a href="<?php echo $carousel['slider_link1']['url'];?>"><?php echo $carousel['slider_link_text1'];?></a> <a href="<?php echo $carousel['slider_link2']['url'];?>"><?php echo $carousel['slider_link_text2'];  ?></a>
                     </div>
                   </div>
                 </div>
