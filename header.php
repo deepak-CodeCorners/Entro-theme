@@ -1,7 +1,7 @@
-<?php  
-$hss_carousel= get_field('hss_carousel');
-?>
+<?php $home_banner_image = get_field('home_banner_image'); 
+print_r($home_banner_image);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +17,21 @@ $hss_carousel= get_field('hss_carousel');
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <?php if( is_front_page() || is_home() ):?>
+    <style>
+      .header-top {
+        background: url("<?php echo get_stylesheet_directory_uri();?>/images/banner2.jpg");
+   
+        background-size: 100% 100% ;
+      }
+      </style>
+  <?php endif;?>
+
   <?php wp_head() ;?>
 </head>
 <!-- body -->
 
-<body <?php body_class(); ?>>
+<body>
   <!-- loader  -->
   <div class="loader_bg d-none">
     <div class="loader"><img src="<?php echo get_template_directory_uri();?>/images/loading.gif" alt="#" /></div>
@@ -30,6 +40,7 @@ $hss_carousel= get_field('hss_carousel');
   <!-- header -->
   <header>
     <!-- header inner -->
+    <!-- style="background: url('<?php //echo $home_banner_image; ?>');" -->
     <div class="header-top">
       <div class="header">
         <div class="container">
@@ -66,49 +77,4 @@ $hss_carousel= get_field('hss_carousel');
      </div>
   <!-- end header inner -->
 <!-- end header -->
-<?php if(!empty($hss_carousel)): ?>
-    <section class="slider_section">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
 
-          <?php foreach($hss_carousel as $key=>$carousel):?>
-          <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>" class="<?php echo $key==0 ? 'active': '';?>"></li>
-          <?php endforeach; ?>
-        </ol>
-        <div class="carousel-inner">
-        <?php foreach($hss_carousel as $key =>$carousel):?>
-          <div class="carousel-item <?php echo $key==0 ? 'active':'';?>">
-
-            <div class="container">
-              <div class="carousel-caption">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-bg">
-                      <span><?php echo $carousel['span_text'];?></span>
-                      <h1><?php echo $carousel['slider_htext'];?></h1>
-                      <p><?php echo $carousel['slider_ptext']; ?></p>
-                      
-                      <a href="<?php echo $carousel['slider_link1']['url'];?>"><?php echo $carousel['slider_link_text1'];?></a> <a href="<?php echo $carousel['slider_link2']['url'];?>"><?php echo $carousel['slider_link_text2'];  ?></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-        </div>
-    <?php if ($key!=0):?>
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-     
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  
-    </a>
-    <?php endif; ?>
-</div>
-</div>
-</section>
-<?php endif; ?>
-</div>
-</header>

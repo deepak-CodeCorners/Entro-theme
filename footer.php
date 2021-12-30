@@ -8,6 +8,7 @@ $footer_copy_text = get_field('footer_copy_text', 'option');
 $footer_copy_button = get_field('footer_copy_button', 'option');
 $footer_copy_btn_text = get_field('footer_copy_btn_text', 'option');
 ?>
+
 <!--  footer -->
     <footer>
       <div class="footer ">
@@ -15,16 +16,18 @@ $footer_copy_btn_text = get_field('footer_copy_btn_text', 'option');
           <div class="row">
             <div class="col-md-12 contact_bg ">
             <div class="titlepage">
+            <?php //if(isset($inner_contact_text)): ?>
               <h2><?php echo $footer_h2_text; ?></h2>
+              <?php //endif; ?>
+
             </div>
                 <?php  
                   echo do_shortcode('[contact-form-7 id="79" title="Contact form Footer"]');
                 ?>
 
             </div>
-            <div class="col-md-12 border_top news">
+            <div class="col-md-12 border_top news">           
             <h3><?php echo $footer_h3_text ;?></h3>
-
             <?php 
               echo do_shortcode('[contact-form-7 id="86" title="Footer Newsletter"]');
             ?>

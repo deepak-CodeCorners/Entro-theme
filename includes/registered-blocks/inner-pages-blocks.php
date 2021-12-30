@@ -31,5 +31,15 @@ acf_register_block_type(array(
     'keywords'        =>array('inner-gallery-section','quote'),
 ));
 
+acf_register_block_type(array(
+    'name'          =>'Inner Contact Section',
+    'title'         =>__('Inner Contact Section'),
+    'description'   =>__(''),
+    'render_template'=>'includes/blocks/inner-pages/inner-contact-section.php',
+    'category'        =>'inner-pages-blocks',
+    'icon'           =>'admin-comments',
+    'keywords'       =>array('inner-contact-section','quote'),
+));
+
 ?>
 
